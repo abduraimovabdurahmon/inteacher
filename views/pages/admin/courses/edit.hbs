@@ -1,0 +1,222 @@
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="{{url}}/vendors/styles/core.css">
+<link rel="stylesheet" type="text/css" href="{{url}}/vendors/styles/icon-font.min.css">
+<link rel="stylesheet" type="text/css" href="{{url}}/src/plugins/datatables/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" type="text/css" href="{{url}}/src/plugins/datatables/css/responsive.bootstrap4.min.css">
+<link rel="stylesheet" type="text/css" href="{{url}}/vendors/styles/style.css">
+
+
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-119386393-1');
+</script>
+
+
+{{> admin/pre-loader}}
+{{> admin/header}}
+{{> admin/right-sidebar}}
+{{> admin/left-sidebar}}
+
+
+
+<div class="main-container">
+    <div class="pd-ltr-20 xs-pd-20-10">
+        <div class="min-height-200px">
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <div class="title">
+                            <h4>Taxrirlash</h4>
+                        </div>
+                        <nav aria-label="breadcrumb" role="navigation">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/admin/courses">Kurslar</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Kursni taxrirlash</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!-- Default Basic Forms Start -->
+            <div class="pd-20 card-box mb-30">
+                <div class="clearfix">
+                    <div class="pull-left">
+                        <h4 class="text-blue h4">Kursni taxrirlash</h4>
+                        <p class="mb-30">Eski kursni ma'lumotlarini o'zgartirish</p>
+                    </div>
+                </div>
+
+                {{!-- form --}}
+                <form method="POST" enctype="multipart/form-data" action="/admin/courses/edit/{{data.course.id}}">
+                    {{!-- hashtag --}}
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">Hashtag</label>
+                        <div class="col-sm-12 col-md-10">
+                            <select name="hashtag" class="custom-select col-12 form-control">
+                                {{#eq data.course.hashtag "language"}}
+                                    <option value="language" selected>Language</option>
+                                    {{else}}
+                                    <option value="language">Language</option>
+                                {{/eq}}
+                                {{#eq data.course.hashtag "technology"}}
+                                    <option value="tech" selected>Technology</option>
+                                    {{else}}
+                                    <option value="tech">Technology</option>
+                                {{/eq}}
+                                {{#eq data.course.hashtag "science"}}
+                                    <option value="science" selected>Science</option>
+                                    {{else}}
+                                    <option value="science">Science</option>
+                                {{/eq}}
+                            </select>
+                        </div>
+                    </div>
+
+
+                    {{!-- form select --}}
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">Mentor</label>
+                        <div class="col-sm-12 col-md-10">
+                            <select name="author" class="custom-select col-12 form-control">
+                                {{#each data.teachers}}
+                                    {{#eq id  ../data.course.author}}
+                                        <option value="{{id}}" selected>{{name}}</option>
+                                    {{else}}
+                                        <option value="{{id}}">{{name}}</option>
+                                    {{/eq}}
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+
+                    {{!-- nomi --}}
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">Nomi</label>
+                        <div class="col-sm-12 col-md-10">
+                            <input name="name" class="form-control" type="text" value="{{data.course.name}}"
+                                placeholder="Nodejs Professional" required>
+                        </div>
+                    </div>
+
+                    {{!-- tavsif --}}
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">Tavsif</label>
+                        <div class="col-sm-12 col-md-10">
+                            <textarea name="description" class="form-control" placeholder="Tavsif" rows="5"
+                                required>{{data.course.description}}</textarea>
+                        </div>
+                    </div>
+
+                    {{!-- price --}}
+
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">Narx</label>
+                        <div class="col-sm-12 col-md-10">
+                            <input name="price" type="number" class="form-control" value="{{data.course.price}}"
+                                placeholder="100000" required>
+                        </div>
+                    </div>
+
+                    {{!-- lessons --}}
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">Darslar soni</label>
+                        <div class="col-sm-12 col-md-10">
+                            <input name="lessons" type="number" class="form-control" value="{{data.course.lessons}}"
+                                placeholder="100000" required>
+                        </div>
+                    </div>
+
+                    {{!-- duration --}}
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">Davomiyligi (oy)</label>
+                        <div class="col-sm-12 col-md-10">
+                            <input name="duration" type="number" class="form-control" value="{{data.course.duration}}"
+                                placeholder="100000" required>
+                        </div>
+                    </div>
+
+
+                    {{!-- rating --}}
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">Reyting</label>
+                        <div class="col-sm-12 col-md-10">
+                            <input name="rating" type="number" class="form-control" placeholder="5"
+                                value="{{data.course.rating}}" required>
+                        </div>
+                    </div>
+
+                    {{!-- rating Count --}}
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">Baholar soni</label>
+                        <div class="col-sm-12 col-md-10">
+                            <input name="ratingCount" type="number" class="form-control" placeholder="250"
+                                value="{{data.course.ratingCount}}" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="img" class="col-sm-12 col-md-2 col-form-label">Avvalgi rasm</label>
+                        <a href="{{data.course.image}}" target="_blank" class="col-sm-12 col-md-10">
+                            <img src="{{data.course.image}}" alt="Eski rasm" width="100px">
+                        </a>
+                    </div>
+
+                    {{!-- file --}}
+                    {{!-- file --}}
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">Yangi rasm</label>
+                        <div class="col-sm-12 col-md-10">
+                            <input name="image" type="file" class="form-control-file form-control height-auto">
+                        </div>
+                    </div>
+
+                    {{!-- submit --}}
+                    <input type="submit" value="Saqlash" class="btn btn-primary">
+
+                </form>
+            </div>
+
+
+        </div>
+        <div class="footer-wrap pd-20 mb-20 card-box">
+            InTeacher LMS
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<!-- js -->
+<script src="{{url}}/vendors/scripts/core.js"></script>
+<script src="{{url}}/vendors/scripts/script.min.js"></script>
+<script src="{{url}}/vendors/scripts/process.js"></script>
+<script src="{{url}}/vendors/scripts/layout-settings.js"></script>
+<script src="{{url}}/src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+<script src="{{url}}/src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+<script src="{{url}}/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
+<script src="{{url}}/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+<!-- buttons for Export datatable -->
+<script src="{{url}}/src/plugins/datatables/js/dataTables.buttons.min.js"></script>
+<script src="{{url}}/src/plugins/datatables/js/buttons.bootstrap4.min.js"></script>
+<script src="{{url}}/src/plugins/datatables/js/buttons.print.min.js"></script>
+<script src="{{url}}/src/plugins/datatables/js/buttons.html5.min.js"></script>
+<script src="{{url}}/src/plugins/datatables/js/buttons.flash.min.js"></script>
+<script src="{{url}}/src/plugins/datatables/js/pdfmake.min.js"></script>
+<script src="{{url}}/src/plugins/datatables/js/vfs_fonts.js"></script>
+<!-- Datatable Setting js -->
+<script src="{{url}}/vendors/scripts/datatable-setting.js"></script>
+
+
+
+

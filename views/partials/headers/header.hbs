@@ -17,7 +17,7 @@
                     <div class="header_contact_info">
                         <a href="tel:+4641468425"><i class="icon_phone"></i>+998901427395</a>
                         <a href="mailto:abduraimovabdurahmon@gmail.com"><i
-                                class="icon_mail_alt"></i>englishninja@gmail.com</a>
+                                class="icon_mail_alt"></i>inteacher@gmail.com</a>
                     </div>
                 </div>
                 <div class="col-xl-6 col-lg-5 col-md-5">
@@ -38,7 +38,7 @@
                             <i class="icon_menu"></i>
                         </div>
                         <div class="logo">
-                            <a href="/"><img src="{{url}}/images/logo.png" alt="#" width="142px"></a>
+                            <a href="/"><img src="{{url}}/images/logo.png" alt="#" width="200px"></a>
                         </div>
 
                         <nav class="navbar_bar">
@@ -80,13 +80,12 @@
                                 </li>
                             </ul>
                         </nav>
-                        <div class="navbar_btn">
+                        <div class="navbar_btn d-flex">
                             {{#if registered}}
-                                <a href="/dashboard" class="btn_1">Dashboard</a>
-                                <a href="javascript: logout()" class="btn_1" style="border-radius: 50px;">Log out</a>
+                                <a href="/dashboard" class="btn btn-primary btn-sm">Dashboard</a>
                             {{else}}
-                                <a href="/login" class="btn_1">Login</a>
-                                <a href="/register" class="btn_1">Register</a>
+                                <a href="/login" class="btn btn-primary btn-sm mr-1">Login</a>
+                                <a href="/register" class="btn btn-primary btn-sm">Register</a>
                             {{/if}}
                         </div>
                     </div>
@@ -96,18 +95,6 @@
     </div>
 </header>
 
-<script>
-    function logout() {
-        const bool = confirm("Rostdan ham logout qilmoqchimisiz ?");
-
-        if (bool) {
-            return window.location.href = '/logout';
-        }
-
-        return 0;
-    }
-</script>
-<!-- header part end -->
 
 
 <script>
