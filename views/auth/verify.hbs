@@ -1,0 +1,27 @@
+{{!-- <form method="POST">
+    <input type="text" name="code" required placeholder="kodni kiriting">
+    {{#if msg}}
+        <p>{{msg}}</p>
+    {{/if}}
+    <button type="submit">Tasdiqlash</button>
+</form> --}}
+
+
+<div class="container-fluid">
+    <div class="row" id="box " style="height: 90vh;">
+        <div class="col-12 bg-white d-flex justify-content-center align-items-center">
+            <form action="" method="post" class="bg-light form border border-secondary rounded p-3 w-50" style="max-width: 290px;">
+                <div class="mb-3">
+                    <label for="code" class="form-label">Emailingizga borgan kodni kiriting:</label>
+                    <input type="text" name="code" placeholder="enter code" class="form-control" id="code" aria-describedby="emailHelp">
+                </div>
+                {{#if msg}}
+                    <p class="small text-danger">{{msg}}</p>
+                {{/if}}
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary w-100">Tasdiqlash</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

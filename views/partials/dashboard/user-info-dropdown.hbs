@@ -1,0 +1,23 @@
+<div class="user-info-dropdown">
+    <div class="dropdown">
+        <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
+            <span class="user-icon">
+                {{#if user.image}}
+                <img src="{{url}}/uploads/{{user.image}}" alt="">
+                {{else}}
+                <div
+                    style="width: 100%; height:100%; display:flex; align-items:center; justify-content: center; color: #999;">
+                    <h3>A</h3>
+                </div>
+                {{/if}}
+            </span>
+            <span class="user-name">Abdurahmon</span>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+            <a class="dropdown-item" href="/"><i class="dw dw-user1"></i> Profile</a>
+            <a class="dropdown-item" href="/"><i class="dw dw-settings2"></i> Setting</a>
+            <a class="dropdown-item" href="/"><i class="dw dw-help"></i> Help</a>
+            <a class="dropdown-item" href="/logout"><i class="dw dw-logout"></i> Log Out</a>
+        </div>
+    </div>
+</div>

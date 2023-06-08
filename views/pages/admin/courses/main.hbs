@@ -1,0 +1,223 @@
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="{{url}}/vendors/styles/core.css">
+<link rel="stylesheet" type="text/css" href="{{url}}/vendors/styles/icon-font.min.css">
+<link rel="stylesheet" type="text/css" href="{{url}}/src/plugins/datatables/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" type="text/css" href="{{url}}/src/plugins/datatables/css/responsive.bootstrap4.min.css">
+<link rel="stylesheet" type="text/css" href="{{url}}/vendors/styles/style.css">
+
+
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-119386393-1');
+</script>
+
+
+{{> admin/pre-loader}}
+{{> admin/header}}
+{{> admin/right-sidebar}}
+{{> admin/left-sidebar}}
+
+
+
+
+
+
+<div class="main-container">
+    <div class="pd-ltr-20 xs-pd-20-10">
+        <div class="min-height-200px">
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <div class="title">
+                            <h4>Kurslar ro'yxati</h4>
+                        </div>
+                        <nav aria-label="breadcrumb" role="navigation">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="index.html">Admin</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Kurslar</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!-- Simple Datatable start -->
+            <div class="card-box mb-30">
+                <div class="d-flex justify-content-between">
+                    <div class="pd-20">
+                        <h4 class="text-blue h4">Mavjud kurslar</h4>
+                    </div>
+
+                    {{!-- add btn --}}
+                    <div class="pd-20">
+                        <a href="/admin/courses/add" class="btn btn-primary btn-sm" type="button">Kurs qo'shish</a>
+                    </div>
+                </div>
+
+
+
+                <div class="pb-20">
+                    <table class="data-table table stripe hover nowrap">
+                        <thead>
+                            <tr>
+                                <th class="table-plus datatable-nosort">Author</th>
+                                <th>Nomi</th>
+                                <th>Qisqacha</th>
+                                <th>Narxi</th>
+                                <th>Rasm</th>
+                                <th>Reyting</th>
+                                <th>O'quvchilar</th>
+                                <th>Lessons</th>
+                                <th>Duration</th>
+                                <th class="datatable-nosort">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            {{#each data.courses}}
+
+                            <tr courseID="{{id}}">
+                                <td class="table-plus">{{author}}</td>
+                                <td>{{name}}</td>
+                                <td>{{description}}</td>
+                                <td>{{price}}</td>
+                                <td><a href="{{image}}" class="text-primary" target="_blank">Rasm</a></td>
+                                <td>{{rating}}</td>
+                                <td>{{students}}</td>
+                                <td>{{lessons}}</td>
+                                <td>{{duration}}</td>
+                                <td>
+                                    <div class="dropdown">
+                                        <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
+                                            href="#" role="button" data-toggle="dropdown">
+                                            <i class="dw dw-more"></i>
+                                        </a>
+                                        <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
+                                            <a class="dropdown-item" href="/course-details/{{id}}"><i
+                                                    class="dw dw-eye"></i> Ko'rish</a>
+                                            <a class="dropdown-item" href="/course-details/{{id}}"><i
+                                                    class="dw dw-edit2"></i> Taxrirlash</a>
+                                            <div class="dropdown-item" onclick="deleteCourse('{{id}}')"><i
+                                                    class="dw dw-delete-3"></i>O'chirish</div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+
+                            {{/each}}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-wrap pd-20 mb-20 card-box">
+            InTeacher LMS
+        </div>
+    </div>
+</div>
+
+{{!-- --}}
+<div class="modal fade" id="confirmation-modal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-body text-center font-18">
+                <h4 class="padding-top-30 mb-30 weight-500">Are you sure you want to continue?</h4>
+                <div class="padding-bottom-30 row" style="max-width: 170px; margin: 0 auto;">
+                    <div class="col-6">
+                        <button type="button" class="btn btn-secondary border-radius-100 btn-block confirmation-btn"
+                            data-dismiss="modal"><i class="fa fa-times"></i></button>
+                        NO
+                    </div>
+                    <div class="col-6">
+                        <button type="button" class="btn btn-primary border-radius-100 btn-block confirmation-btn"
+                            data-dismiss="modal"><i class="fa fa-check"></i></button>
+                        YES
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- js -->
+<script src="{{url}}/vendors/scripts/core.js"></script>
+<script src="{{url}}/vendors/scripts/script.min.js"></script>
+<script src="{{url}}/vendors/scripts/process.js"></script>
+<script src="{{url}}/vendors/scripts/layout-settings.js"></script>
+<script src="{{url}}/src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+<script src="{{url}}/src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+<script src="{{url}}/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
+<script src="{{url}}/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+<!-- buttons for Export datatable -->
+<script src="{{url}}/src/plugins/datatables/js/dataTables.buttons.min.js"></script>
+<script src="{{url}}/src/plugins/datatables/js/buttons.bootstrap4.min.js"></script>
+<script src="{{url}}/src/plugins/datatables/js/buttons.print.min.js"></script>
+<script src="{{url}}/src/plugins/datatables/js/buttons.html5.min.js"></script>
+<script src="{{url}}/src/plugins/datatables/js/buttons.flash.min.js"></script>
+<script src="{{url}}/src/plugins/datatables/js/pdfmake.min.js"></script>
+<script src="{{url}}/src/plugins/datatables/js/vfs_fonts.js"></script>
+<!-- Datatable Setting js -->
+<script src="{{url}}/vendors/scripts/datatable-setting.js"></script>
+<!-- add sweet alert js & css in footer -->
+<script src="{{url}}/src/plugins/sweetalert2/sweetalert2.all.js"></script>
+<script src="{{url}}/src/plugins/sweetalert2/sweet-alert.init.js"></script>
+
+
+
+
+
+
+<script>
+
+
+    const deleteCourse = async (id) => {
+
+        $('#confirmation-modal').modal('show');
+
+        const bool = await new Promise((resolve, reject) => {
+            $('.confirmation-btn').click(function () {
+                if ($(this).hasClass('btn-primary')) {
+                    resolve(true);
+                }
+                else {
+                    resolve(false);
+                }
+            });
+        });
+
+
+
+        if (bool) {
+            const response = await fetch(`/admin/courses/delete/${id}`, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (response.status === 200) {
+                $(`tr[courseID=${id}]`).remove();
+                swal(
+                    {
+                        position: 'top-end',
+                        type: 'success',
+                        title: 'Muvaffaqiyatli!',
+                        showConfirmButton: false,
+                        timer: 1500
+                    }
+                )
+            }
+            else {
+                alert('Xatolik yuz berdi');
+            }
+        }
+    }
+
+</script>

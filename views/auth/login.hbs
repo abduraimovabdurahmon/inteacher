@@ -1,0 +1,67 @@
+{{!-- <form method="post">
+    <input type="email" name="email" id="email" required placeholder="Emailni kiriting">
+    <input type="password" name="password" id="password" required placeholder="Parolni kiriting">
+    {{#if msg}}
+    <p>{{msg}}</p>
+    {{/if}}
+    <input type="submit" value="Kirish">
+</form> --}}
+
+<div class="container-fluid">
+    <div class="row" id="box">
+        <div class="border border-1 col-sm-12 col-md-6 d-none d-lg-block" id="image">
+        </div>
+        <div class="col-sm-12 col-lg-6 bg-light d-flex justify-content-center align-items-center">
+            <form action="" class="form border border-secondary rounded p-3 w-50" method="POST">
+                <!-- login text -->
+                <h1 class="text-center text-dark">Login</h1>
+
+                <!-- create  -->
+                <!-- email -->
+                <div class="mb-3">
+                    <label for="email" class="form-label text-dark">Email address:</label>
+                    <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp"
+                        placeholder="enter email" required>
+                </div>
+                <!-- password -->
+                <div class="mb-3">
+                    <label for="password" class="form-label text-dark">Password:</label>
+                    <input type="password" name="password" class="form-control" id="password" placeholder="enter password" required>
+                </div>
+                {{#if msg}}
+                    <p class="small text-danger">{{msg}}</p>
+                {{/if}}
+                <!-- button -->
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary w-100">Login</button>
+                </div>
+
+                <!-- forgot password -->
+                <div class="mb-1">
+                    <a href="#" class="text-link small">Forgot Password?</a>
+                </div>
+
+                <!-- create account -->
+                <div class="mb-3">
+                    <a href="/register" class="text-link small">Create Account</a>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<style>
+    #box {
+        height: 90vh;
+        background-color: white;
+    }
+    #image {
+        height: 100%;
+        background-image: url("/images/login/login.png");
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+</style>

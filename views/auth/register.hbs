@@ -1,0 +1,97 @@
+{{!-- <form id="registerForm" method="POST">
+    <input type="email" name="email" id="registerEmail" required placeholder="email">
+    <input type="password" name="password" id="registerPassword" required placeholder="password">
+    <input type="password" id="registerRepeatPassword" required placeholder="repeat password">
+    {{#if msg}}
+    <p>{{msg}}</p>
+    {{/if}}
+
+    <button type="submit" id="registerSubmit">Register</button>
+</form> --}}
+
+
+
+
+<div class="container-fluid">
+    <div class="row" id="box">
+        <div class="col-sm-12 col-lg-6 bg-light d-flex justify-content-center align-items-center">
+            <form action="" class="form border border-secondary rounded p-3 w-50" method="POST">
+                <!-- login text -->
+                <h1 class="text-center text-dark">Register</h1>
+
+                <!-- create  -->
+                <!-- email -->
+                <div class="mb-3">
+                    <label for="email" class="form-label text-dark">Email address:</label>
+                    <input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp"
+                        placeholder="enter email" required>
+                </div>
+                <!-- password -->
+                <div class="mb-3">
+                    <label for="password" class="form-label text-dark">Password:</label>
+                    <input type="password" name="password" class="form-control" id="password"
+                        placeholder="enter password" required>
+                </div>
+                <!-- password2 -->
+                <div class="mb-3">
+                    <label for="password2" class="form-label text-dark">Repeat password:</label>
+                    <input type="password" name="password2" class="form-control" id="password2"
+                        placeholder="enter password" required>
+                </div>
+                {{#if msg}}
+                <p class="small text-danger">{{msg}}</p>
+                {{/if}} 
+                <!-- button -->
+                <div class="mb-3">
+                    <button type="submit" class="btn btn-primary w-100" id="registerSubmit">Register</button>
+                </div>
+
+                <!-- Already exist -->
+                <p class="text-dark small">Already have an account? <a href="/login">Login</a></p>
+
+            </form>
+        </div>
+
+        <div class="border border-1 col-sm-12 col-md-6 d-none d-lg-block" id="image">
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<style>
+    #box {
+        height: 90vh;
+        background-color: white;
+    }
+
+    #image {
+        height: 100%;
+        background-image: url("/images/register/register.png");
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+</style>
+
+
+
+
+
+
+
+<script>
+    const registerPassword = document.getElementById('password');
+    const registerRepeatPassword = document.getElementById('password2');
+    const registerSubmit = document.getElementById('registerSubmit');
+
+    registerSubmit.addEventListener("click", (e) => {
+        if (registerPassword.value !== registerRepeatPassword.value) {
+            e.preventDefault();
+            alert("Parollar bir xil emas!");
+            return;
+        }
+    });
+</script>

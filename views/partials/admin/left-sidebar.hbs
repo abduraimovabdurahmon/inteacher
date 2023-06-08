@@ -1,0 +1,121 @@
+	<div class="left-side-bar">
+		<div class="brand-logo">
+			<a href="/">
+				<img src="{{url}}/src/images/logo-dark.png" alt="" class="dark-logo">
+				<img src="{{url}}/src/images/logo-white.png" alt="" class="light-logo">
+			</a>
+			<div class="close-sidebar" data-toggle="left-sidebar-close">
+				<i class="ion-close-round"></i>
+			</div>
+		</div>
+		<div class="menu-block customscroll">
+			<div class="sidebar-menu">
+				<ul id="accordion-menu">
+					<li class="dropdown">
+						<a href="/admin"
+							class="dropdown-toggle no-arrow">
+							<span class="micon dw dw-house-1"></span>
+							<span class="mtext">Home</span>
+						</a>
+					</li>
+					{{!-- teachers --}}
+					<li class="dropdown">
+						<a href="/admin/teachers"
+							class="dropdown-toggle no-arrow">
+							<span class="micon dw dw-user-13"></span>
+							<span class="mtext">O'qituvchilar</span>
+						</a>
+					</li>
+					{{!-- students --}}
+					<li class="dropdown">
+						<a href="/admin/students"
+							class="dropdown-toggle no-arrow">
+							<span class="micon dw dw-user-13"></span>
+							<span class="mtext">O'quvchilar</span>
+						</a>
+					</li>
+					{{!-- groups --}}
+					<li class="dropdown">
+						<a href="/admin/groups"
+							class="dropdown-toggle no-arrow">
+							<span class="micon dw dw-user-13"></span>
+							<span class="mtext">Guruhlar</span>
+						</a>
+					</li>
+					{{!-- courses --}}
+					<li class="dropdown">
+						<a href="/admin/courses"
+							class="dropdown-toggle no-arrow">
+							<span class="micon dw dw-book"></span>
+							<span class="mtext">Kurslar</span>
+						</a>
+					</li>
+					{{!-- finance --}}
+					<li class="dropdown">
+						<a href="/admin/finance"
+							class="dropdown-toggle no-arrow">
+							<span class="micon dw dw-money-2"></span>
+							<span class="mtext">Moliya</span>
+						</a>
+					</li>
+					{{!-- xonalar --}}
+					<li class="dropdown">
+						<a href="/admin/rooms"
+							class="dropdown-toggle no-arrow">
+							<span class="micon dw dw-library"></span>
+							<span class="mtext">Xonalar</span>
+						</a>
+					</li>
+
+					<li>
+						<a href="/admin/calendar" class="dropdown-toggle no-arrow">
+							<span class="micon dw dw-calendar1"></span><span class="mtext">Calendar</span>
+						</a>
+					</li>
+                    {{!-- zoom meeting --}}
+
+                    <li>
+                        <a href="/admin/zoom" class="dropdown-toggle no-arrow">
+                            <span class="micon dw dw-video-camera1"></span><span class="mtext">Zoom meet</span>
+                        </a>
+                    </li>
+
+					<li>
+						<a href="/admin/chat" class="dropdown-toggle no-arrow">
+							<span class="micon dw dw-chat3"></span><span class="mtext">Chat</span>
+						</a>
+					</li>
+                    <li>
+						<a href="/admin/chat" class="dropdown-toggle no-arrow">
+                            <span class="micon dw dw-library"></span><span class="mtext">Kutubxona</span>
+                        </a>
+					</li>
+					<li>
+						<a href="/admin/chat" class="dropdown-toggle no-arrow">
+							<span class="micon dw dw-invoice"></span><span class="mtext">To'lov</span>
+						</a>
+					</li>
+					<li>
+						<div class="dropdown-divider"></div>
+					</li>
+					<li>
+						<div class="sidebar-small-cap">Qo'shimcha</div>
+					</li>
+
+                    <li>
+                        <a href="javascript:;" class="dropdown-toggle">
+                            <span class="micon dw dw-help"></span><span class="mtext">Yordam</span>
+                        </a>
+                        <ul class="submenu">
+                            <li><a href="/admin/question">Ko'p so'raladigan savollar</a></li>
+                            <li><a href="/admin/terms">Foydlalanish shartlari</a></li>
+                            {{!-- contact --}}
+                            <li><a href="/contact">Aloqa</a></li>
+                        </ul>
+                    </li>
+					
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="mobile-menu-overlay"></div>

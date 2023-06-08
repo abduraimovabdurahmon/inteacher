@@ -1,0 +1,117 @@
+<!-- start Preloader  -->
+<div class="preloder_part">
+    <div class="spinner">
+        <div class="dot1"></div>
+        <div class="dot2"></div>
+    </div>
+</div>
+<!-- End Preloader  -->
+
+
+<!-- header part here -->
+<header class="header_part">
+    <div class="sub_header section_bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-6 col-lg-7 col-md-7">
+                    <div class="header_contact_info">
+                        <a href="tel:+4641468425"><i class="icon_phone"></i>+998901427395</a>
+                        <a href="mailto:abduraimovabdurahmon@gmail.com"><i
+                                class="icon_mail_alt"></i>englishninja@gmail.com</a>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-lg-5 col-md-5">
+                    <div class="header_login_info">
+                        <a href="teacher.html">O'qituvchi bo'ling</a>
+                        <a href="my-profile.html">Profilim</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="main_nav">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="header_iner d-flex justify-content-between align-items-center">
+                        <div class="sidebar_icon troggle_icon d-lg-none">
+                            <i class="icon_menu"></i>
+                        </div>
+                        <div class="logo">
+                            <a href="/"><img src="{{url}}/images/logo.png" alt="#" width="142px"></a>
+                        </div>
+
+                        <nav class="navbar_bar">
+                            <ul>
+                                <li class="mega_menu_dropdown">
+                                    {{#if home}}
+                                        <a class="nav-link active" href="/">Home</a>
+                                    {{else}}
+                                        <a class="nav-link" href="/">Home</a>
+                                    {{/if}}
+                                </li>
+                                <li class="mega_menu_dropdown">
+                                    <a class="mega_menu_dropdown-toggle nav-link" href="#">Asosiy</a>
+                                    <ul>
+                                        {{#if courses}}
+                                        <li><a href="/courses" class="active">Kurslar</a></li>
+                                        {{else}}
+                                        <li><a href="/courses">Kurslar</a></li>
+                                        {{/if}}
+                                        {{#if lessons}}
+                                        <li><a href="/lessons" class="active">Bepul darslar</a></li>
+                                        {{else}}
+                                        <li><a href="/lessons">Bepul darslar</a></li>
+                                        {{/if}}
+                                    </ul>
+                                </li>
+                                    {{#if news}}
+                                        <li><a href="/news" class="active">Yangiliklar</a></li>
+                                    {{else}}
+                                        <li><a href="/news">Yangiliklar</a></li>
+                                    {{/if}}
+                                
+                                <li>
+                                    {{#if contact}}
+                                    <a href="/contact" class="active">Contact</a>
+                                    {{else}}
+                                    <a href="/contact">Contact</a>
+                                    {{/if}}
+                                </li>
+                            </ul>
+                        </nav>
+                        <div class="navbar_btn">
+                            {{#if registered}}
+                                <a href="/dashboard" class="btn_1">Dashboard</a>
+                                <a href="javascript: logout()" class="btn_1" style="border-radius: 50px;">Log out</a>
+                            {{else}}
+                                <a href="/login" class="btn_1">Login</a>
+                                <a href="/register" class="btn_1">Register</a>
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<script>
+    function logout() {
+        const bool = confirm("Rostdan ham logout qilmoqchimisiz ?");
+
+        if (bool) {
+            return window.location.href = '/logout';
+        }
+
+        return 0;
+    }
+</script>
+<!-- header part end -->
+
+
+<script>
+    window.onload = function () {
+        document.getElementsByClassName("preloder_part")[0].style.display = 'none';
+    }
+</script>

@@ -1,0 +1,441 @@
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="src/pages/auth/css/bootstrap.min.css" />
+<!-- animate CSS -->
+<link rel="stylesheet" href="src/pages/auth/css/animate.css" />
+<!-- font awesome CSS -->
+<link rel="stylesheet" href="src/pages/auth/vendors/elegant_Icon/elegent_icon.css" />
+<!-- nice select CSS -->
+<link rel="stylesheet" href="src/pages/auth/vendors/niceselect/css/nice-select.css" />
+<!-- owl carousel CSS -->
+<link rel="stylesheet" href="src/pages/auth/vendors/owl_carousel/css/owl.carousel.css" />
+<!-- magnific popup CSS -->
+<link rel="stylesheet" href="src/pages/auth/vendors/magnify_popup/magnific-popup.css" />
+<!-- Countdown CSS -->
+<link rel="stylesheet" href="src/pages/auth/vendors/countdown/css/Countdown.css" />
+<!-- flaticon CSS -->
+<link rel="stylesheet" href="src/pages/auth/css/flaticon.css" />
+<!-- aos CSS -->
+<link rel="stylesheet" href="src/pages/auth/vendors/aos/aos.css" />
+<!-- courses CSS -->
+<link rel="stylesheet" href="src/pages/auth/css/courses.css" />
+<!-- style CSS -->
+<link rel="stylesheet" href="src/pages/auth/style.css" />
+
+
+
+
+{{> headers/header}}
+
+
+
+{{#if login}}
+<!-- become a teacher part here -->
+<div id="primary" class="content-area section_padding">
+    <main id="main" class="site-main">
+        <div class="container">
+            {{#if errmsg}}
+            <div class="learnpress">
+                <div id="learn-press-become-teacher-form" class="become-teacher-form learn-press-form">
+                    <form name="become-teacher-form" method="post" enctype="multipart/form-data" action="">
+                        <div class="learn-press-message error">
+                            <i class="fa"></i>{{errmsg}}
+                        </div>
+                    </form>
+                </div>
+            </div><br />
+            {{/if}}
+            <article id="post-47" class="post-47 page type-page status-publish hentry">
+                <div class="entry-content">
+                    <div class="learnpress">
+                        <div class="learn-press-form-login learn-press-form">
+                            <h3>Login</h3>
+                            <form name="learn-press-login" method="post" action="">
+                                <ul class="form-fields">
+                                    <li class="form-field">
+                                        <label for="username">Email&nbsp;<span class="required">*</span></label>
+                                        <input type="text" name="email" id="email" placeholder="Email"
+                                            autocomplete="email">
+                                    </li>
+                                    <li class="form-field">
+                                        <label for="password">Password&nbsp;<span class="required">*</span></label>
+                                        <span class="lp-password-input"><input type="password" name="password"
+                                                id="password" placeholder="Password"
+                                                autocomplete="current-password"></span>
+                                    </li>
+                                </ul>
+                                <p>
+                                    <label>
+                                        <input type="checkbox" name="rememberme">
+                                        Remember me
+                                    </label>
+                                </p>
+                                <p>
+                                    <input type="hidden" name="learn-press-login-nonce" value="f346c119af">
+                                    <button type="submit">Login</button>
+                                </p>
+                                <p class="small p-1 m-1">
+                                    <a href="/register" class="text-primary">go to Register page</a>
+                                </p>
+                                <p class="small p-1 m-1">
+                                    <a href="/reset" class="text-primary">Parolni unutdingizmi ?</a>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div><!-- .entry-content -->
+            </article>
+        </div>
+    </main><!-- #main -->
+</div>
+<!-- become a teacher part end -->
+{{else if register}}
+
+<!-- become a teacher part here -->
+<div id="primary" class="content-area section_padding">
+    <main id="main" class="site-main">
+        <div class="container">
+            {{#if errmsg}}
+            <div class="learnpress">
+                <div id="learn-press-become-teacher-form" class="become-teacher-form learn-press-form">
+                    <form name="become-teacher-form" method="post" enctype="multipart/form-data" action="">
+                        <div class="learn-press-message error">
+                            <i class="fa"></i>{{errmsg}}
+                        </div>
+                    </form>
+                </div>
+            </div><br />
+            {{/if}}
+            <article id="post-47" class="post-47 page type-page status-publish hentry">
+                <div class="entry-content">
+                    <div class="learnpress">
+                        <div id="learn-press-profile" class="lp-user-profile guest">
+                            <div class="main-content-area row">
+                                <div class="learn-press-form-register learn-press-form">
+                                    <h3>Register</h3>
+                                    <form name="learn-press-register" method="post" action="" id="registerForm">
+                                        <ul class="form-fields">
+                                             <li class="form-field">
+                                                <label for="name">Name&nbsp;<span
+                                                        class="required">*</span></label>
+                                                <input id="name" name="name" type="text"
+                                                    placeholder="Name" autocomplete="name" value="">
+                                            </li>
+                                            <li class="form-field">
+                                                <label for="reg_email">Email address&nbsp;<span
+                                                        class="required">*</span></label>
+                                                <input id="reg_email" name="email" type="text" placeholder="Email"
+                                                    autocomplete="email" value="">
+                                            </li>
+                                            <li class="form-field">
+                                                <label for="reg_password">Password&nbsp;<span
+                                                        class="required">*</span></label>
+                                                <span class="lp-password-input"><input id="reg_password" name="password"
+                                                        type="password" placeholder="Password"
+                                                        autocomplete="new-password"></span>
+                                            </li>
+                                            <li class="form-field">
+                                                <label for="reg_password2">Confirm Password&nbsp;<span
+                                                        class="required">*</span></label>
+                                                <span class="lp-password-input"><input id="reg_password2"
+                                                        name="password2" type="password" placeholder="Password"
+                                                        autocomplete="off"></span>
+                                            </li>
+                                        </ul>
+                                        <p>
+                                            <input type="hidden" id="learn-press-register-nonce"
+                                                name="learn-press-register-nonce" value="d9160cea03"><input
+                                                type="hidden" name="_wp_http_referer" value="/lp-profile/"><button
+                                                type="submit">Register</button>
+                                        </p>
+
+                                        {{!-- already --}}
+                                        <p class="learn-press-form-row small">
+                                            Already have an account? <a href="/login">Login here</a>
+                                        </p>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- .entry-content -->
+            </article>
+        </div>
+    </main><!-- #main -->
+</div>
+<!-- become a teacher part end -->
+
+<script>
+    document.getElementById("registerForm").addEventListener("submit", (e) => {
+        const password = document.getElementById("reg_password").value;
+        const password2 = document.getElementById("reg_password2").value;
+        if (password != password2) {
+            e.preventDefault();
+            alert("Parollarni tekshirib qaytadan kiriting");
+            return;
+        }
+    })
+</script>
+
+{{else if verify}}
+
+<!-- become a teacher part here -->
+<div id="primary" class="content-area section_padding">
+    <main id="main" class="site-main">
+        <div class="container">
+            {{#if errmsg}}
+            <div class="learnpress">
+                <div id="learn-press-become-teacher-form" class="become-teacher-form learn-press-form">
+                    <form name="become-teacher-form" method="post" enctype="multipart/form-data" action="">
+                        <div class="learn-press-message error">
+                            <i class="fa"></i>{{errmsg}}
+                        </div>
+                    </form>
+                </div>
+            </div><br />
+            {{/if}}
+            <article id="post-47" class="post-47 page type-page status-publish hentry">
+                <div class="entry-content">
+                    <div class="learnpress">
+                        <div id="learn-press-profile" class="lp-user-profile guest">
+                            <div class="main-content-area row">
+                                <div class="learn-press-form-register learn-press-form">
+                                    <h3>Verify email</h3>
+                                    <form name="learn-press-register" method="post" action="" id="verifyForm">
+                                        <ul class="form-fields">
+                                            <li class="form-field">
+                                                <label for="verify_code">Kodni kiriting&nbsp;<span
+                                                        class="required">*</span></label>
+                                                <input id="verify_code" name="code" type="text" placeholder="Code"
+                                                    value="">
+                                            </li>
+                                        </ul>
+                                        <p>
+                                            <input required="true" type="hidden" id="learn-press-register-nonce"
+                                                name="learn-press-register-nonce" value="d9160cea03"><input
+                                                type="hidden" name="_wp_http_referer" value="/lp-profile/"><button
+                                                type="submit">Tasdiqlash</button>
+                                        </p>
+
+                                        {{!-- resend code --}}
+                                        <p class="learn-press-form-row small">
+                                            Emailni o'zgartirish uchun <a href="/register">bu yerga</a> bosing
+                                        </p>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- .entry-content -->
+            </article>
+        </div>
+    </main><!-- #main -->
+</div>
+<!-- become a teacher part end -->
+
+<script>
+    document.getElementById("verifyForm").addEventListener("submit", (e) => {
+        const code = document.getElementById("verify_code").value;
+        if (code.length != 5) {
+            e.preventDefault();
+            alert("Kod 5 ta raqamdan iborat bo'lishi kerak");
+            return;
+        }
+    })
+</script>
+
+{{else if enterEmail}}
+
+<!-- become a teacher part here -->
+<div id="primary" class="content-area section_padding">
+    <main id="main" class="site-main">
+        <div class="container">
+            {{#if errmsg}}
+            <div class="learnpress">
+                <div id="learn-press-become-teacher-form" class="become-teacher-form learn-press-form">
+                    <form name="become-teacher-form" method="post" enctype="multipart/form-data" action="">
+                        <div class="learn-press-message error">
+                            <i class="fa"></i>{{errmsg}}
+                        </div>
+                    </form>
+                </div>
+            </div><br />
+            {{/if}}
+            <article id="post-47" class="post-47 page type-page status-publish hentry">
+                <div class="entry-content">
+                    <div class="learnpress">
+                        <div class="learn-press-form-login learn-press-form">
+                            <h3>Reset Password</h3>
+                            <form name="learn-press-login" method="post" action="">
+                                <ul class="form-fields">
+                                    <li class="form-field">
+                                        <label for="username">Email&nbsp;<span class="required">*</span></label>
+                                        <input type="text" name="email" id="email" placeholder="Email"
+                                            autocomplete="email">
+                                    </li>
+                                </ul>
+                                <p>
+                                    <input type="hidden" name="learn-press-login-nonce" value="f346c119af">
+                                    <button type="submit">Send code</button>
+                                </p>
+                                <p class="small p-1 m-1">
+                                    <a href="/register" class="text-primary">go to Register page</a>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div><!-- .entry-content -->
+            </article>
+        </div>
+    </main><!-- #main -->
+</div>
+<!-- become a teacher part end -->
+
+
+
+{{else if enterCode}}
+
+<!-- become a teacher part here -->
+<div id="primary" class="content-area section_padding">
+    <main id="main" class="site-main">
+        <div class="container">
+            {{#if errmsg}}
+            <div class="learnpress">
+                <div id="learn-press-become-teacher-form" class="become-teacher-form learn-press-form">
+                    <form name="become-teacher-form" method="post" enctype="multipart/form-data" action="">
+                        <div class="learn-press-message error">
+                            <i class="fa"></i>{{errmsg}}
+                        </div>
+                    </form>
+                </div>
+            </div><br />
+            {{/if}}
+            <article id="post-47" class="post-47 page type-page status-publish hentry">
+                <div class="entry-content">
+                    <div class="learnpress">
+                        <div id="learn-press-profile" class="lp-user-profile guest">
+                            <div class="main-content-area row">
+                                <div class="learn-press-form-register learn-press-form">
+                                    <h3>Verify email</h3>
+                                    <form name="learn-press-register" method="post" action="" id="verifyForm">
+                                        <ul class="form-fields">
+                                            <li class="form-field">
+                                                <label for="verify_code">Kodni kiriting&nbsp;<span
+                                                        class="required">*</span></label>
+                                                <input id="verify_code" name="code" type="text" placeholder="Code"
+                                                    value="">
+                                            </li>
+                                        </ul>
+                                        <p>
+                                            <input required="true" type="hidden" id="learn-press-register-nonce"
+                                                name="learn-press-register-nonce" value="d9160cea03"><input
+                                                type="hidden" name="_wp_http_referer" value="/lp-profile/"><button
+                                                type="submit">Tasdiqlash</button>
+                                        </p>
+
+                                        {{!-- resend code --}}
+                                        <p class="learn-press-form-row small">
+                                            Emailni o'zgartirish uchun <a href="/enter-email">bu yerga</a> bosing
+                                        </p>
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- .entry-content -->
+            </article>
+        </div>
+    </main><!-- #main -->
+</div>
+<!-- become a teacher part end -->
+
+
+
+{{else if newPassword}}
+
+<!-- become a teacher part here -->
+<div id="primary" class="content-area section_padding">
+    <main id="main" class="site-main">
+        <div class="container">
+            {{#if errmsg}}
+            <div class="learnpress">
+                <div id="learn-press-become-teacher-form" class="become-teacher-form learn-press-form">
+                    <form name="become-teacher-form" method="post" enctype="multipart/form-data" action="">
+                        <div class="learn-press-message error">
+                            <i class="fa"></i>{{errmsg}}
+                        </div>
+                    </form>
+                </div>
+            </div><br />
+            {{/if}}
+            <article id="post-47" class="post-47 page type-page status-publish hentry">
+                <div class="entry-content">
+                    <div class="learnpress">
+                        <div class="learn-press-form-login learn-press-form">
+                            <h3>Change password</h3>
+                            <form name="learn-press-login" method="post" action="">
+                                <ul class="form-fields">
+                                    <li class="form-field">
+                                        <label for="password">Password&nbsp;<span class="required">*</span></label>
+                                        <span class="lp-password-input"><input type="password" name="password"
+                                                id="password" placeholder="Password"
+                                                autocomplete="current-password"></span>
+                                    </li>
+                                </ul>
+                                <p>
+                                    <input type="hidden" name="learn-press-login-nonce" value="f346c119af">
+                                    <button type="submit">Change Password</button>
+                                </p>
+                                <p class="small p-1 m-1">
+                                    <a href="/register" class="text-primary">go to Register page</a>
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div><!-- .entry-content -->
+            </article>
+        </div>
+    </main><!-- #main -->
+</div>
+<!-- become a teacher part end -->
+
+
+
+
+{{else}}
+<h1>404</h1>
+{{/if}}
+
+
+
+
+{{> footers/footer1}}
+
+
+
+
+<!-- jquery slim -->
+<script src="src/pages/auth/js/jquery-3.4.1.min.js"></script>
+<!-- popper js -->
+<script src="src/pages/auth/js/popper.min.js"></script>
+<!-- bootstarp js -->
+<script src="src/pages/auth/js/bootstrap.min.js"></script>
+<!-- nice select -->
+<script src="src/pages/auth/vendors/niceselect/js/jquery.nice-select.min.js"></script>
+<!-- owl carousel js -->
+<script src="src/pages/auth/vendors/owl_carousel/js/owl.carousel.min.js"></script>
+<!-- magnify popup js -->
+<script src="src/pages/auth/vendors/magnify_popup/jquery.magnific-popup.js"></script>
+<!-- simplyCountdown js -->
+<script src="src/pages/auth/vendors/countdown/js/simplyCountdown.min.js"></script>
+<!-- counter js -->
+<script src="src/pages/auth/vendors/counter/jquery.countTo.js"></script>
+<!-- aos js -->
+<script src="src/pages/auth/vendors/aos/aos.js"></script>
+<!-- font awesome js -->
+<script src="https://kit.fontawesome.com/6ee3230338.js" />
+</script>
+<!-- custom js -->
+<script src="src/pages/auth/js/custom.js"></script>

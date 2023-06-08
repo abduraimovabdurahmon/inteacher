@@ -1,0 +1,162 @@
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="{{url}}/vendors/styles/core.css">
+<link rel="stylesheet" type="text/css" href="{{url}}/vendors/styles/icon-font.min.css">
+<link rel="stylesheet" type="text/css" href="{{url}}/src/plugins/datatables/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" type="text/css" href="{{url}}/src/plugins/datatables/css/responsive.bootstrap4.min.css">
+<link rel="stylesheet" type="text/css" href="{{url}}/src/plugins/dropzone/src/dropzone.css">
+<link rel="stylesheet" type="text/css" href="{{url}}/vendors/styles/style.css">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-119386393-1');
+</script>
+
+
+{{> admin/pre-loader}}
+{{> admin/header}}
+{{> admin/right-sidebar}}
+{{> admin/left-sidebar}}
+
+
+<div class="main-container">
+    <div class="pd-ltr-20 xs-pd-20-10">
+        <div class="min-height-200px">
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-md-6 col-sm-12">
+                        <div class="title">
+                            <h4>Kurs qo'shish</h4>
+                        </div>
+                        <nav aria-label="breadcrumb" role="navigation">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/admin">Home</a></li>
+                                <li class="breadcrumb-item"><a href="/admin/courses">Kurslar</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Kurs qo'shish</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <!-- Default Basic Forms Start -->
+            <div class="pd-20 card-box mb-30">
+                <div class="clearfix">
+                    <div class="pull-left">
+                        <h4 class="text-blue h4">Yangi kurs qo'shish</h4>
+                        <p class="mb-30">Yangi kursni ro'yxatdan o'tkazish</p>
+                    </div>
+                </div>
+
+                {{!-- form --}}
+                <form method="POST" enctype="multipart/form-data">
+                    {{!-- hashtag --}}
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">Hashtag</label>
+                        <div class="col-sm-12 col-md-10">
+                            <select name="hashtag" class="custom-select col-12 form-control">
+                                <option selected="">Tanlang</option>
+                                <option value="language">Language</option>
+                                <option value="tech">Technology</option>
+                                <option value="science">Science</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                    {{!-- form select --}}
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">Mentor</label>
+                        <div class="col-sm-12 col-md-10">
+                            <select name="author" class="custom-select col-12 form-control">
+                                <option selected="">Tanlang</option>
+                                {{#each data.authors}}
+                                <option value="{{id}}">{{name}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+
+                    {{!-- nomi --}}
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">Nomi</label>
+                        <div class="col-sm-12 col-md-10">
+                            <input name="name" class="form-control" type="text" placeholder="Nodejs Professional"
+                                required>
+                        </div>
+                    </div>
+
+                    {{!-- tavsif --}}
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">Tavsif</label>
+                        <div class="col-sm-12 col-md-10">
+                            <textarea name="description" class="form-control" placeholder="Tavsif" rows="5"
+                                required></textarea>
+                        </div>
+                    </div>
+
+                    {{!-- price --}}
+
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">Narx</label>
+                        <div class="col-sm-12 col-md-10">
+                            <input name="price" type="number" class="form-control" placeholder="100000" required>
+                        </div>
+                    </div>
+
+                    {{!-- lessons --}}
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">Darslar soni</label>
+                        <div class="col-sm-12 col-md-10">
+                            <input name="lessons" type="number" class="form-control" placeholder="100000" required>
+                        </div>
+                    </div>
+
+                    {{!-- duration --}}
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">Davomiyligi (oy)</label>
+                        <div class="col-sm-12 col-md-10">
+                            <input name="duration" type="number" class="form-control" placeholder="100000" required>
+                        </div>
+                    </div>
+
+                    {{!-- file --}}
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">Rasm</label>
+                        <div class="col-sm-12 col-md-10">
+                            <input name="image" type="file" class="form-control-file form-control height-auto" required>
+                        </div>
+                    </div>
+
+                    {{!-- submit --}}
+                    <input type="submit" class="btn btn-primary" value="Saqlash">
+
+                </form>
+            </div>
+
+
+        </div>
+        <div class="footer-wrap pd-20 mb-20 card-box">
+            InTeacher LMS
+        </div>
+    </div>
+</div>
+
+
+
+<!-- js -->
+<script src="{{url}}/vendors/scripts/core.js"></script>
+<script src="{{url}}/vendors/scripts/script.min.js"></script>
+<script src="{{url}}/vendors/scripts/process.js"></script>
+<script src="{{url}}/vendors/scripts/layout-settings.js"></script>
+<script src="{{url}}/src/plugins/apexcharts/apexcharts.min.js"></script>
+<script src="{{url}}/src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+<script src="{{url}}/src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+<script src="{{url}}/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
+<script src="{{url}}/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+<script src="{{url}}/vendors/scripts/dashboard.js"></script>

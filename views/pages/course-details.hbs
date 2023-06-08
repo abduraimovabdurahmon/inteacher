@@ -1,0 +1,136 @@
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="{{url}}/src/pages/course-details/css/bootstrap.min.css" />
+<!-- animate CSS -->
+<link rel="stylesheet" href="{{url}}/src/pages/course-details/css/animate.css" />
+<!-- font awesome CSS -->
+<link rel="stylesheet" href="{{url}}/src/pages/course-details/vendors/elegant_Icon/elegent_icon.css" />
+<!-- nice select CSS -->
+<link rel="stylesheet" href="{{url}}/src/pages/course-details/vendors/niceselect/css/nice-select.css" />
+<!-- owl carousel CSS -->
+<link rel="stylesheet" href="{{url}}/src/pages/course-details/vendors/owl_carousel/css/owl.carousel.css" />
+<!-- magnific popup CSS -->
+<link rel="stylesheet" href="{{url}}/src/pages/course-details/vendors/magnify_popup/magnific-popup.css" />
+<!-- Countdown CSS -->
+<link rel="stylesheet" href="{{url}}/src/pages/course-details/vendors/countdown/css/Countdown.css" />
+<!-- flaticon CSS -->
+<link rel="stylesheet" href="{{url}}/src/pages/course-details/css/flaticon.css" />
+<!-- aos CSS -->
+<link rel="stylesheet" href="{{url}}/src/pages/course-details/vendors/aos/aos.css" />
+<!-- courses CSS -->
+<link rel="stylesheet" href="{{url}}/src/pages/course-details/css/courses.css" />
+<!-- style CSS -->
+<link rel="stylesheet" href="{{url}}/src/pages/course-details/style.css" />
+
+
+
+
+{{>headers/header}}
+
+
+
+<!-- course details part here -->
+<div id="content" class="site-content" bis_skin_checked="1">
+    <div class="lp-archive-courses" bis_skin_checked="1">
+        <ul class="learn-press-breadcrumb">
+            <li><a href="/" bis_skin_checked="1"><span>Home</span></a></li>
+            <li class="breadcrumb-delimiter"><i class="fas fa-chevron-right"></i></li>
+            <li><a href="/courses" bis_skin_checked="1"><span>Hamma kurslar</span></a></li>
+            <li class="breadcrumb-delimiter"><i class="fas fa-chevron-right"></i></li>
+            <li><a href="#" bis_skin_checked="1"><span>{{data.course.hashtag}}</span></a></li>
+            <li class="breadcrumb-delimiter"><i class="fas fa-chevron-right"></i></li>
+            <li><span>{{data.course.name}}</span></li>
+        </ul>
+        <div id="learn-press-course" class="course-summary" bis_skin_checked="1">
+            <div class="course-content course-summary-content" bis_skin_checked="1">
+                <div class="course-detail-info" bis_skin_checked="1">
+                    <div class="lp-content-area" bis_skin_checked="1">
+                        <div class="course-info-left" bis_skin_checked="1">
+                            <div class="course-meta course-meta-primary" bis_skin_checked="1">
+                                <div class="course-meta__pull-left" bis_skin_checked="1">
+                                    <div class="meta-item meta-item-instructor" bis_skin_checked="1">
+                                        <div class="meta-item__image" bis_skin_checked="1">
+                                            {{#if data.teacher.image}}
+                                                <img alt="User Avatar" src="{{url}}/src/pages/course-details/img/author_5.jpg" srcset="src/pages/course-details/img/author_5.jpg"
+                                                    class="avatar avatar-96 photo" height="250" width="250" loading="lazy">
+                                            {{else}}
+                                                {{!-- font awesome avatar icon --}}
+                                                <i class="fas fa-user-circle fa-10x avatar avatar-96 photo" style="font-size: 50px;"></i>
+                                            {{/if}}
+                                        </div>
+                                        <div class="meta-item__value" bis_skin_checked="1">
+                                            <label>O'qituvchi</label>
+                                            <div bis_skin_checked="1">
+                                                <a href="my-profile.html" bis_skin_checked="1"><span>{{data.teacher.name}}</span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="meta-item meta-item-categories" bis_skin_checked="1">
+                                        <div class="meta-item__value" bis_skin_checked="1">
+                                            <label>Kategoriya</label>
+                                            <div bis_skin_checked="1">
+                                                <a href="course-category.html" rel="tag" bis_skin_checked="1">{{data.course.hashtag}}</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <h1 class="course-title">{{data.course.name}}</h1>
+                            <div class="course-meta course-meta-secondary" bis_skin_checked="1">
+                                <div class="course-meta__pull-left" bis_skin_checked="1">
+                                    <div class="meta-item meta-item-duration" bis_skin_checked="1">{{data.course.duration}} oy</div>
+                                    <div class="meta-item meta-item-lesson" bis_skin_checked="1"><span
+                                            class="meta-number">{{data.course.lessons}} ta darslar</span></div>
+                                    <div class="meta-item meta-item-student" bis_skin_checked="1"><span
+                                            class="meta-number">{{data.course.students}} ta o'quvchi</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- course details part end -->
+
+<!-- Start LTR & RTL Button -->
+<div class="ltr-rtl-button">
+    <a class="default-btn active ltr">
+        LTR
+    </a>
+    <a class="default-btn rtl">
+        RTL
+    </a>
+</div>
+<!-- End LTR & RTL Button -->
+
+
+{{>footers/footer1}}
+
+
+
+<!-- jquery slim -->
+<script src="{{url}}/src/pages/course-details/js/jquery-3.4.1.min.js"></script>
+<!-- popper js -->
+<script src="{{url}}/src/pages/course-details/js/popper.min.js"></script>
+<!-- bootstarp js -->
+<script src="{{url}}/src/pages/course-details/js/bootstrap.min.js"></script>
+<!-- nice select -->
+<script src="{{url}}/src/pages/course-details/vendors/niceselect/js/jquery.nice-select.min.js"></script>
+<!-- owl carousel js -->
+<script src="{{url}}/src/pages/course-details/vendors/owl_carousel/js/owl.carousel.min.js"></script>
+<!-- magnify popup js -->
+<script src="{{url}}/src/pages/course-details/vendors/magnify_popup/jquery.magnific-popup.js"></script>
+<!-- simplyCountdown js -->
+<script src="{{url}}/src/pages/course-details/vendors/countdown/js/simplyCountdown.min.js"></script>
+<!-- counter js -->
+<script src="{{url}}/src/pages/course-details/vendors/counter/jquery.countTo.js"></script>
+<!-- aos js -->
+<script src="{{url}}/src/pages/course-details/vendors/aos/aos.js"></script>
+<!-- courses js -->
+<script src="{{url}}/src/pages/course-details/js/courses.js"></script>
+<!-- font awesome js -->
+<script src="https://kit.fontawesome.com/6ee3230338.js" />
+</script>
+<!-- custom js -->
+<script src="{{url}}/src/pages/course-details/js/custom.js"></script>
