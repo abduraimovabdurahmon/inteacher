@@ -57,7 +57,6 @@ router.post("/", async (req, res) => {
     expiresIn: "1h",
   });
 
-
   res.cookie("token", token, { httpOnly: true, maxAge: 3600000 });
 
   if(user.role === "admin" || user.role === "superAdmin"){

@@ -7,6 +7,7 @@ const { adminController } = require("../../../controllers/mainControllers");
 const User = require("../../../database/models/User");
 const Course = require("../../../database/models/Course");
 require("dotenv").config();
+const getUser = require("../../../utils/getUser");
 
 const minPath = path.join(__dirname, "../../../public/uploads/courses/");
 
@@ -29,7 +30,8 @@ router.get("/", adminController,  async (req, res) => {
       registered: req.cookies.token ? true : false,
       url: process.env.mainURL + "/src/dashboard/",
       data: {
-        authors: teachers
+        authors: teachers,
+        user: await getUser(req.cookies.token)
       }
     });
   } catch (error) {

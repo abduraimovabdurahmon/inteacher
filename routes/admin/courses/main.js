@@ -4,42 +4,29 @@ const { adminController } = require("../../../controllers/mainControllers");
 const Course = require("../../../database/models/Course");
 const User = require("../../../database/models/User");
 require("dotenv").config();
+const getUser = require("../../../utils/getUser");
+
 
 router.get("/", adminController, async (req, res) => {
-  const response = await Course.findAll();
+  
+  const courses = await Course.findAll().then((courses) => {
+    return courses.map((course) => course.dataValues);
+  })
 
-  const arr = await response.map((course) => course.dataValues);
+  const teachers = await User.findAll({ where: { role: "teacher" } }).then((teachers) => {
+    return teachers.map((teacher) => teacher.dataValues);
+  })
 
-  const courses = await Promise.all(
-    arr.map(async (course) => {
-      const teacher = await User.findOne({ where: { id: course.author } }).then(
-        async (data) => await data.dataValues.name
-      );
-      return {
-        id: course.id,
-        author: teacher,
-        hashtag: course.hashtag,
-        name: course.name,
-        description: course.description,
-        price: course.price,
-        image: course.image,
-        rating: course.rating,
-        ratingCount: course.ratingCount,
-        students: course.students,
-        lessons: course.lessons,
-        duration: course.duration,
-      };
-    })
-  );
 
-  // const teacher = await User.findOne({where: {id: course.author}}).then(data=>data.dataValues.name);
 
   res.render("pages/admin/courses/main", {
-    title: "Admin",
+    title: "Kurslar",
     registered: req.cookies.token ? true : false,
     url: process.env.mainURL + "/src/dashboard",
     data: {
       courses: courses,
+      teachers: teachers,
+      user: await getUser(req.cookies.token)
     },
   });
 });

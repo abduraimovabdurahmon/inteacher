@@ -25,8 +25,6 @@
 
 
 
-
-
 <div class="main-container">
     <div class="pd-ltr-20 xs-pd-20-10">
         <div class="min-height-200px">
@@ -34,12 +32,12 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <div class="title">
-                            <h4>Kurslar ro'yxati</h4>
+                            <h4>O'qituvchilar ro'yxati</h4>
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="index.html">Admin</a></li>
-                                <li class="breadcrumb-item active" aria-current="page">Kurslar</li>
+                                <li class="breadcrumb-item active" aria-current="page">O'qituvchilar</li>
                             </ol>
                         </nav>
                     </div>
@@ -49,12 +47,12 @@
             <div class="card-box mb-30">
                 <div class="d-flex justify-content-between">
                     <div class="pd-20">
-                        <h4 class="text-blue h4">Mavjud kurslar</h4>
+                        <h4 class="text-blue h4">Barcha o'qituvchilar</h4>
                     </div>
 
                     {{!-- add btn --}}
                     <div class="pd-20">
-                        <a href="/admin/courses/add" class="btn btn-primary btn-sm" type="button">Kurs qo'shish</a>
+                        <button class="btn btn-primary btn-sm" id="addTeacher">Yangi o'qituvchi qo'shish</button>
                     </div>
                 </div>
 
@@ -64,38 +62,26 @@
                     <table class="data-table table stripe hover nowrap">
                         <thead>
                             <tr>
-                                <th class="table-plus datatable-nosort">Author</th>
-                                <th>Nomi</th>
-                                <th>Qisqacha</th>
-                                <th>Narxi(so'm)</th>
+                                <th class="table-plus datatable-nosort">Ism</th>
+                                <th>Email</th>
+                                <th>username</th>
                                 <th>Rasm</th>
-                                <th>Reyting</th>
-                                <th>O'quvchilar</th>
-                                <th>Lessons</th>
-                                <th>Duration</th>
                                 <th class="datatable-nosort">Action</th>
                             </tr>
                         </thead>
                         <tbody>
 
-                            {{#each data.courses}}
+                            {{#each data.teachers}}
 
                             <tr courseID="{{id}}">
-                                <td class="table-plus">
-                                    {{#each ../data.teachers}}
-                                    {{#eq id ../author}}
-                                        {{name}}
-                                    {{/eq}}
-                                    {{/each}}
-                                </td>
                                 <td>{{name}}</td>
-                                <td>{{description}}</td>
-                                <td>{{price}}</td>
+                                <td>{{email}}</td>
+                                {{#if username}}
+                                    <td><a href="/user/{{username}}">{{username}}</a></td>
+                                {{else}}
+                                    <td>yo'q</td>
+                                {{/if}}
                                 <td><a href="{{image}}" class="text-primary" target="_blank">Rasm</a></td>
-                                <td>{{rating}}</td>
-                                <td>{{students}}</td>
-                                <td>{{lessons}}</td>
-                                <td>{{duration}}</td>
                                 <td>
                                     <div class="dropdown">
                                         <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
@@ -181,48 +167,43 @@
 
 
 <script>
+    let bool = false;
 
-
-    const deleteCourse = async (id) => {
-
-        $('#confirmation-modal').modal('show');
-
-        const bool = await new Promise((resolve, reject) => {
-            $('.confirmation-btn').click(function () {
-                if ($(this).hasClass('btn-primary')) {
-                    resolve(true);
+    $('#addTeacher').click(function () {
+        swal({
+            title: 'Username\'ni kiriting:',
+            input: 'text',
+            inputPlaceholder: "@username",
+            showCancelButton: true,
+            confirmButtonText: 'Submit',
+            showLoaderOnConfirm: true,
+            confirmButtonClass: 'btn btn-success',
+            cancelButtonClass: 'btn btn-danger',
+            preConfirm: function (username) {
+                if (/@\w+(?:_\w+)?/g.test(username)) {
+                    bool = true;
                 }
-                else {
-                    resolve(false);
-                }
-            });
-        });
-
-
-        if (bool) {
-            const response = await fetch(`/admin/courses/delete/${id}`, {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-
-            if (response.status === 200) {
-                $(`tr[courseID=${id}]`).remove();
-                swal(
-                    {
-                        position: 'top-end',
-                        type: 'success',
-                        title: 'Muvaffaqiyatli!',
-                        showConfirmButton: false,
-                        timer: 1500
-                    }
-                )
+                
+            },
+            allowOutsideClick: false
+        })
+        .then(() => {
+            if (bool) {
+                swal({
+                    type: 'success',
+                    title: 'Muvaffaqqiyatli qo\'shildi',
+                });
+                bool = false;
             }
             else {
-                alert('Xatolik yuz berdi');
+                swal({
+                    type: 'error',
+                    title: 'Username xato kiritildi!',
+                })
             }
-        }
-    }
+        })
+
+    });
+
 
 </script>

@@ -8,6 +8,8 @@ const User = require("../../../database/models/User");
 const Course = require("../../../database/models/Course");
 const fs = require("fs");
 require("dotenv").config();
+const getUser = require("../../../utils/getUser");
+
 
 const minPath = path.join(__dirname, "../../../public/uploads/courses/");
 
@@ -32,6 +34,7 @@ router.get("/:id", adminController, async (req, res) => {
                 course,
                 teacher,
                 teachers,
+                user: await getUser(req.cookies.token)
             },
         });
     } catch (error) {

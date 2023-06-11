@@ -75,7 +75,8 @@ app.use('/admin', require('./routes/admin/main'));
 app.use((req, res) => {
     res.render('pages/errors/404', {
         title: 'Sahifa topilmadi',
-        registered: req.cookies.token ? true : false
+        registered: req.cookies.token ? true : false,
+        url: process.env.mainURL
     });
 });
 
