@@ -48,4 +48,6 @@ router.use("/add", require("./add"));
 
 router.use("/delete", require("./delete"));
 
+router.use("/edit/", require("./edit"));
+
 module.exports = router;

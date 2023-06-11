@@ -11,9 +11,6 @@ sequelize.sync({force: false});
 
 
 
-
-
-
 // middleware
 app.use(cors());
 app.use(express.json());
