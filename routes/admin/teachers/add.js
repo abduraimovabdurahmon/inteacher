@@ -23,6 +23,7 @@ router.post("/", adminController, async (req, res)=>{
         }
 
         user.role = 'teacher';
+        user.about = 'O\'qituvchi'
 
         await user.save();
 
