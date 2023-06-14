@@ -19,6 +19,8 @@ const authController = async (req, res, next) => {
     }
 };
 
+
+
 const adminController = async (req, res, next) => {
     try {
         const token = req.cookies.token;

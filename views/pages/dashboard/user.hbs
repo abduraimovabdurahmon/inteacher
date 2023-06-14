@@ -1,0 +1,135 @@
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="{{url}}/vendors/styles/core.css">
+<link rel="stylesheet" type="text/css" href="{{url}}/vendors/styles/icon-font.min.css">
+<link rel="stylesheet" type="text/css" href="{{url}}/src/plugins/datatables/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" type="text/css" href="{{url}}/src/plugins/datatables/css/responsive.bootstrap4.min.css">
+<link rel="stylesheet" type="text/css" href="{{url}}/vendors/styles/style.css">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-119386393-1');
+</script>
+
+
+{{!-- {{> admin/pre-loader}} --}}
+{{> dashboard/header}}
+{{> dashboard/right-sidebar}}
+{{> dashboard/left-sidebar}}
+
+
+
+
+<div class="main-container">
+		<div class="pd-ltr-20 xs-pd-20-10">
+			<div class="min-height-200px">
+				<div class="page-header">
+					<div class="row">
+						<div class="col-md-12 col-sm-12">
+							<div class="title">
+								<h4>Foydalanuvchi profili</h4>
+							</div>
+							<nav aria-label="breadcrumb" role="navigation">
+								<ol class="breadcrumb">
+									<li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+									<li class="breadcrumb-item active" aria-current="page">Foydalanuvchi profili</li>
+								</ol>
+							</nav>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="row">
+					<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 mb-30">
+						<div class="pd-20 card-box height-100-p">
+							<div class="profile-photo">
+                                {{#if data.user.image}}
+                                    <img src="{{url}}/uploads/{{data.user.image}}" alt="" class="avatar-photo">
+                                {{else}}
+                                    <center>
+                                        <i class="icon-copy fa fa-user-circle" aria-hidden="true" style="font-size: 150px;"></i>
+                                    </center>
+                                {{/if}}
+								{{!-- <img src="{{url}}vendors/images/photo1.jpg" alt="" class="avatar-photo"> --}}
+							</div>
+							<h5 class="text-center h5 mb-0">{{data.user.name}}</h5>
+							<p class="text-center text-muted font-14">
+                                {{#if data.user.about}}
+                                    {{data.user.about}}
+                                {{else}}
+                                    Foydalanuvchi
+                                {{/if}}
+                            </p>
+							<div class="profile-info">
+								<h5 class="mb-20 h5 text-blue">Account ma'lumotlari</h5>
+								<ul>
+									<li>
+										<span>Email:</span>
+										{{#if data.user.email}}
+                                            {{data.user.email}}
+                                        {{else}}
+                                            Email yo'q
+                                        {{/if}}
+									</li>
+									<li>
+										<span>Username:</span>
+										{{#if data.user.username}}
+                                            {{data.user.username}}
+                                        {{else}}
+                                            Username yo'q
+                                        {{/if}}
+									</li>
+									<li>
+										<span>Telefon raqam:</span>
+										{{#if data.user.phone}}
+                                            {{data.user.phone}}
+                                        {{else}}
+                                            Telefon raqam yo'q
+                                        {{/if}}
+									</li>
+									<li>
+										<span>Joylashuv:</span>
+										{{#if data.user.location}}
+                                            {{data.user.location}}
+                                        {{else}}
+                                            Joylashuv yo'q
+                                        {{/if}}
+									</li>
+								</ul>
+							</div>                                                        
+						</div>
+					</div>
+				</div>
+			</div>
+			
+
+            <div class="footer-wrap pd-20 mb-20 card-box">InTeacher LMS</div>
+		</div>
+</div>
+
+
+
+
+
+
+
+
+
+<!-- js -->
+<script src="{{url}}/vendors/scripts/core.js"></script>
+<script src="{{url}}/vendors/scripts/script.min.js"></script>
+<script src="{{url}}/vendors/scripts/process.js"></script>
+<script src="{{url}}/vendors/scripts/layout-settings.js"></script>
+<script src="{{url}}/src/plugins/apexcharts/apexcharts.min.js"></script>
+<script src="{{url}}/src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+<script src="{{url}}/src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+<script src="{{url}}/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
+<script src="{{url}}/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+<script src="{{url}}/vendors/scripts/dashboard.js"></script>

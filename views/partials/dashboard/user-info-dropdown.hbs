@@ -1,19 +1,18 @@
 <div class="user-info-dropdown">
     <div class="dropdown">
-        <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-            <span class="user-icon">
+        <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown" style="">
                 {{#if data.user.image}}
-                <img src="{{url}}/uploads/{{data.user.image}}" alt="">
+                    <span class="user-icon">
+                        <img src="{{url}}/uploads/{{data.user.image}}" alt="">
+                    </span>
                 {{else}}
-                <div
-                    style="width: 100%; height:100%; display:flex; align-items:center; justify-content: center; color: #999;">
-                </div>
+                        <i class="icon-copy fa fa-user-circle" aria-hidden="true" style="font-size: 250%;" ></i>
                 {{/if}}
-            </span>
+            
             <span class="user-name">{{data.user.name}}</span>
         </a>
         <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-            <a class="dropdown-item" href="/"><i class="dw dw-user1"></i> Profilim</a>
+            <a class="dropdown-item" href="/dashboard/profile"><i class="dw dw-user1"></i> Profilim</a>
             <a class="dropdown-item" href="/"><i class="dw dw-settings2"></i> Sozlamalar</a>
             <a class="dropdown-item" href="/"><i class="dw dw-help"></i> Yordam</a>
             <a class="dropdown-item" href="/logout"><i class="dw dw-logout"></i> Chiqish</a>

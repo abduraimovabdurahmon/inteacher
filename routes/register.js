@@ -37,7 +37,6 @@ router.get("/", authController, async (req, res) => {
 // post request
 router.post("/", authController, registerValidate, async (req, res) => {
   const { name, email, password } = req.body;
-  
 
   try {
     // find user
@@ -93,12 +92,24 @@ router.post("/", authController, registerValidate, async (req, res) => {
       await user.save();
     } else {
       // create user
-      await User.create({
-        name,
-        email,
-        password: hashedPassword,
-        confirmCode,
-      });
+      if (email == process.env.SUPER_ADMIN_EMAIL) {
+        await User.create({
+          name,
+          email,
+          password: hashedPassword,
+          confirmCode,
+          role: "admin",
+          about: "Super admin",
+        });
+      } else {
+        await User.create({
+          name,
+          email,
+          password: hashedPassword,
+          confirmCode,
+          role: "user",
+        });
+      }
     }
 
     res.cookie("email", email, {

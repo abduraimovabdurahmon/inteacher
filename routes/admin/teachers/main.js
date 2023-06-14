@@ -27,7 +27,15 @@ router.get("/", adminController, async (req, res) => {
     } catch (error) {
         console.log(error);
     }
-})
+});
+
+
+// add
+router.use("/add", adminController, require("./add"));
+
+// delete
+router.use("/delete", adminController, require("./delete"));
+
 
 
 module.exports = router;

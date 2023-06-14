@@ -1,0 +1,193 @@
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<!-- CSS -->
+<link rel="stylesheet" type="text/css" href="{{url}}/vendors/styles/core.css">
+<link rel="stylesheet" type="text/css" href="{{url}}/vendors/styles/icon-font.min.css">
+<link rel="stylesheet" type="text/css" href="{{url}}/src/plugins/datatables/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" type="text/css" href="{{url}}/src/plugins/datatables/css/responsive.bootstrap4.min.css">
+<link rel="stylesheet" type="text/css" href="{{url}}/vendors/styles/style.css">
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-119386393-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-119386393-1');
+</script>
+
+
+{{!-- {{> admin/pre-loader}} --}}
+{{> dashboard/header}}
+{{> dashboard/right-sidebar}}
+{{> dashboard/left-sidebar}}
+
+
+
+
+
+
+
+
+<div class="main-container">
+    <div class="pd-ltr-20 xs-pd-20-10">
+        <div class="min-height-200px">
+            <div class="page-header">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="title">
+                            <h4>Profilni taxrirlash</h4>
+                        </div>
+                        <nav aria-label="breadcrumb" role="navigation">
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
+                                <li class="breadcrumb-item"><a href="/dashboard/profile">Profilim</a></li>
+                                <li class="breadcrumb-item active" aria-current="page">Taxrirlash</li>
+                            </ol>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
+
+            {{!-- form --}}
+            <div class="pd-20 card-box mb-30">
+                <div class="clearfix">
+                    <div class="pull-left">
+                        <h4 class="text-blue h4">Mening profilim</h4>
+                    </div>
+                </div>
+                <form>
+                    {{!-- name --}}
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">Ism:</label>
+                        <div class="col-sm-12 col-md-10">
+                            <input class="form-control" type="text" name="name" placeholder="Ism"
+                                value="{{data.user.name}}">
+                        </div>
+                    </div>
+
+                    {{!-- username --}}
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">Username:</label>
+                        <div class="col-sm-12 col-md-10">
+                            <input class="form-control" type="text" name="username" placeholder="Username"
+                                value="{{data.user.username}}">
+                        </div>
+                    </div>
+
+                    {{!-- email --}}
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">Email:</label>
+                        <div class="col-sm-12 col-md-10">
+                            <input class="form-control" type="email" name="email" placeholder="Email address"
+                                value="{{data.user.email}}" readonly>
+                        </div>
+                    </div>
+
+                    {{!-- phone --}}
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">Phone:</label>
+                        <div class="col-sm-12 col-md-10">
+                            <input class="form-control" type="text" name="phone" placeholder="Phone number"
+                                value="{{data.user.phone}}">
+                        </div>
+                    </div>
+
+                    {{!-- location --}}
+                    <div class="form-group row">
+                        <label class="col-sm-12 col-md-2 col-form-label">Location:</label>
+                        <div class="col-sm-12 col-md-10">
+                            <input class="form-control" type="text" name="location" placeholder="Location"
+                                value="{{data.user.location}}">
+                        </div>
+                    </div>
+
+                    <div class="btn btn-primary" id="save">Saqlash</div>
+                </form>
+            </div>
+
+        </div>
+
+        <div class="footer-wrap pd-20 mb-20 card-box">InTeacher LMS</div>
+    </div>
+</div>
+
+
+
+
+
+<!-- js -->
+<script src="{{url}}/vendors/scripts/core.js"></script>
+<script src="{{url}}/vendors/scripts/script.min.js"></script>
+<script src="{{url}}/vendors/scripts/process.js"></script>
+<script src="{{url}}/vendors/scripts/layout-settings.js"></script>
+<script src="{{url}}/src/plugins/apexcharts/apexcharts.min.js"></script>
+<script src="{{url}}/src/plugins/datatables/js/jquery.dataTables.min.js"></script>
+<script src="{{url}}/src/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
+<script src="{{url}}/src/plugins/datatables/js/dataTables.responsive.min.js"></script>
+<script src="{{url}}/src/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+<script src="{{url}}/vendors/scripts/dashboard.js"></script>
+
+<script src="{{url}}/src/plugins/sweetalert2/sweetalert2.all.js"></script>
+<script src="{{url}}/src/plugins/sweetalert2/sweet-alert.init.js"></script>
+
+
+
+
+<script>
+    $(document).ready(function () {
+        $("#save").click(function (e) {
+            e.preventDefault();
+            var name = $("input[name=name]").val();
+            var username = $("input[name=username]").val();
+            var phone = $("input[name=phone]").val();
+            var location = $("input[name=location]").val();
+            var email = $("input[name=email]").val();
+            var data = {
+                name: name,
+                username: username,
+                phone: phone,
+                location: location,
+                email: email
+            }
+            
+            
+            $.ajax({
+                url: "/dashboard/profile/update",
+                method: "POST",
+                data: data,
+                success: function (res) {
+                    if (res.success) {
+                        swal(
+                            {
+                                position: 'top-end',
+                                type: 'success',
+                                title: res.message,
+                                showConfirmButton: false,
+                                timer: 1500
+                            }
+                        );
+
+
+                        setTimeout(() => {
+                            window.location.href = '/dashboard/profile';
+                        }, 1500);
+                    }
+                    else{
+                        swal(
+                            {
+                                position: 'top-end',
+                                type: 'error',
+                                title: res.message,
+                                showConfirmButton: false,
+                                timer: 1500
+                            }
+                        );
+                    }
+                }
+            })
+            })
+    })
+</script>

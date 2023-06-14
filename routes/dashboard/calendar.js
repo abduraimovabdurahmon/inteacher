@@ -1,9 +1,8 @@
 const { Router } = require('express');
 const router = Router();
-const authController = require("../../controllers/protection");
 const getUser = require("../../utils/getUser");
 
-router.get("/", authController, async (req, res) => {
+router.get("/",  async (req, res) => {
     res.render("pages/dashboard/calendar", {
         title: "Dashboard",
         registered: req.cookies.token ? true : false,

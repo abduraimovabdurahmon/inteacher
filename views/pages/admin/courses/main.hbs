@@ -17,7 +17,7 @@
 </script>
 
 
-{{> admin/pre-loader}}
+{{!-- {{> admin/pre-loader}} --}}
 {{> admin/header}}
 {{> admin/right-sidebar}}
 {{> admin/left-sidebar}}
@@ -59,8 +59,9 @@
                 </div>
 
 
-
+ 
                 <div class="pb-20">
+
                     <table class="data-table table stripe hover nowrap">
                         <thead>
                             <tr>
@@ -103,12 +104,9 @@
                                             <i class="dw dw-more"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                            <a class="dropdown-item" href="/course-details/{{id}}"><i
-                                                    class="dw dw-eye"></i> Ko'rish</a>
-                                            <a class="dropdown-item" href="/admin/courses/edit/{{id}}"><i
-                                                    class="dw dw-edit2"></i> Taxrirlash</a>
-                                            <div class="dropdown-item" onclick="deleteCourse('{{id}}')"><i
-                                                    class="dw dw-delete-3"></i>O'chirish</div>
+                                            <a class="dropdown-item" href="/course-details/{{id}}"><i class="dw dw-eye"></i> Ko'rish</a>
+                                            <a class="dropdown-item" href="/admin/courses/edit/{{id}}"><i class="dw dw-edit2"></i> Taxrirlash</a>
+                                            <button class="dropdown-item" onclick="deleteCourse('{{id}}')"><i class="dw dw-delete-3"></i>O'chirish</button>
                                         </div>
                                     </div>
                                 </td>
@@ -122,9 +120,7 @@
             </div>
         </div>
 
-        <div class="footer-wrap pd-20 mb-20 card-box">
-            InTeacher LMS
-        </div>
+        <div class="footer-wrap pd-20 mb-20 card-box">InTeacher LMS</div>
     </div>
 </div>
 
@@ -217,7 +213,11 @@
                         showConfirmButton: false,
                         timer: 1500
                     }
-                )
+                );
+
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1500);
             }
             else {
                 alert('Xatolik yuz berdi');

@@ -49,7 +49,7 @@ app.use('/enter-code', require('./routes/reset/enterCode'));
 // new password
 app.use('/new-password', require('./routes/reset/newPassword'));
 // dashboard
-app.use('/dashboard', require('./routes/dashboard'));
+app.use('/dashboard', require('./routes/dashboard/main'));
 // logout
 app.use('/logout', require('./routes/logout'));
 
@@ -64,6 +64,9 @@ app.use('/course-details', require('./routes/courseDetails'));
 app.use('/news', require('./routes/news'));
 // contact
 app.use('/contact', require('./routes/contact'));
+
+// user
+app.use('/user', require('./routes/dashboard/user'));
 
 
 // admin

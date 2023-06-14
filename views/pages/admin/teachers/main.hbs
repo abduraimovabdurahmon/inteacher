@@ -17,7 +17,7 @@
 </script>
 
 
-{{> admin/pre-loader}}
+{{!-- {{> admin/pre-loader}} --}}
 {{> admin/header}}
 {{> admin/right-sidebar}}
 {{> admin/left-sidebar}}
@@ -36,7 +36,7 @@
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Admin</a></li>
+                                <li class="breadcrumb-item"><a href="/admin">Admin</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">O'qituvchilar</li>
                             </ol>
                         </nav>
@@ -73,15 +73,21 @@
 
                             {{#each data.teachers}}
 
-                            <tr courseID="{{id}}">
+                            <tr teacherID="{{id}}">
                                 <td>{{name}}</td>
                                 <td>{{email}}</td>
                                 {{#if username}}
-                                    <td><a href="/user/{{username}}">{{username}}</a></td>
+                                <td><a href="/user/{{username}}">{{username}}</a></td>
                                 {{else}}
-                                    <td>yo'q</td>
+                                <td>yo'q</td>
                                 {{/if}}
-                                <td><a href="{{image}}" class="text-primary" target="_blank">Rasm</a></td>
+                                <td>
+                                    {{#if image}}
+                                        <a href="{{image}}" class="text-primary" target="_blank">Rasm</a>
+                                    {{else}}
+                                        yo'q
+                                    {{/if}}
+                                </td>
                                 <td>
                                     <div class="dropdown">
                                         <a class="btn btn-link font-24 p-0 line-height-1 no-arrow dropdown-toggle"
@@ -89,12 +95,8 @@
                                             <i class="dw dw-more"></i>
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right dropdown-menu-icon-list">
-                                            <a class="dropdown-item" href="/course-details/{{id}}"><i
-                                                    class="dw dw-eye"></i> Ko'rish</a>
-                                            <a class="dropdown-item" href="/admin/courses/edit/{{id}}"><i
-                                                    class="dw dw-edit2"></i> Taxrirlash</a>
-                                            <div class="dropdown-item" onclick="deleteCourse('{{id}}')"><i
-                                                    class="dw dw-delete-3"></i>O'chirish</div>
+                                            <button class="dropdown-item" onclick="deleteTeacher('{{id}}')"><i
+                                                    class="dw dw-delete-3"></i>O'chirish</button>
                                         </div>
                                     </div>
                                 </td>
@@ -174,36 +176,102 @@
             title: 'Username\'ni kiriting:',
             input: 'text',
             inputPlaceholder: "@username",
-            showCancelButton: true,
-            confirmButtonText: 'Submit',
+            confirmButtonText: 'Qo\'shish',
             showLoaderOnConfirm: true,
             confirmButtonClass: 'btn btn-success',
-            cancelButtonClass: 'btn btn-danger',
+            allowOutsideClick: true,
             preConfirm: function (username) {
                 if (/@\w+(?:_\w+)?/g.test(username)) {
                     bool = true;
                 }
-                
-            },
-            allowOutsideClick: false
-        })
-        .then(() => {
-            if (bool) {
-                swal({
-                    type: 'success',
-                    title: 'Muvaffaqqiyatli qo\'shildi',
-                });
-                bool = false;
-            }
-            else {
-                swal({
-                    type: 'error',
-                    title: 'Username xato kiritildi!',
-                })
+
             }
         })
+            .then((username) => {
+                if (bool) {
+                    $.ajax({
+
+                        url: "/admin/teachers/add",
+                        method: "POST",
+                        data: {
+                            username: username.value
+                        },
+                        success: function (res) {
+                            if (res.success) {
+                                swal(
+                                    {
+                                        position: 'top-end',
+                                        type: 'success',
+                                        title: res.message,
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    }
+                                );
+
+                                setTimeout(() => {
+                                    location.reload();
+                                }, 1000);
+                            }
+                            else{
+                                swal(
+                                    {
+                                        position: 'top-end',
+                                        type: 'error',
+                                        title: res.message,
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    }
+                                );
+                            }
+                        }
+                    })
+                }
+                else {
+                    swal({
+                        type: 'error',
+                        title: 'Username xato kiritildi!',
+                    })
+                }
+            })
 
     });
 
+
+    const deleteTeacher = (id) =>{
+        $.ajax({
+
+                        url: "/admin/teachers/delete",
+                        method: "POST",
+                        data: {id},
+                        success: function (res) {
+                            if (res.success) {
+                                swal(
+                                    {
+                                        position: 'top-end',
+                                        type: 'success',
+                                        title: res.message,
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    }
+                                );
+
+                                setTimeout(() => {
+                                    location.reload();
+                                }, 1000);
+                            }
+                            else{
+                                swal(
+                                    {
+                                        position: 'top-end',
+                                        type: 'error',
+                                        title: res.message,
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    }
+                                );
+                            }
+                        }
+                    })
+    }
 
 </script>

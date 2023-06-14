@@ -1,10 +1,9 @@
 const { Router } = require("express");
 const router = Router();
-const authController = require("../controllers/protection");
-const calendar = require('./dashboard/calendar');
-const getUser = require("../utils/getUser");
+const protection = require("../../controllers/protection");
+const getUser = require("../../utils/getUser");
 
-router.get("/", authController, async (req, res) => { 
+router.get("/", protection, async (req, res) => { 
   res.render("pages/dashboard/home", {
     title: "Dashboard",
     registered: req.cookies.token ? true : false,
@@ -17,7 +16,11 @@ router.get("/", authController, async (req, res) => {
 
 
 // calendar
-router.use('/calendar', authController, calendar);
+router.use('/calendar', protection, require('./calendar'));
+
+// profile
+router.use('/profile', protection, require('./profile/main'));
+
 
 
 

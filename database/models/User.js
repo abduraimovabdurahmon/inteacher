@@ -17,12 +17,24 @@ User.init({
         defaultValue: null,
         unique: true
     },
+    phone: {
+        type: DataTypes.STRING,
+        defaultValue: null,
+    },
+    location: {
+        type: DataTypes.STRING,
+        defaultValue: null,
+    },
     role: {
         type: DataTypes.TEXT,
-        defaultValue: 'user'
+        defaultValue: 'student'
     },
     image: {
         type: DataTypes.TEXT
+    },
+    about:{
+        type: DataTypes.STRING,
+        defaultValue: "Foydalanuvchi"
     },
     email: {
         type: DataTypes.STRING,

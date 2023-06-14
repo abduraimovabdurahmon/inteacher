@@ -14,7 +14,7 @@ module.exports = async (token)=>{
 
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-        const user = await User.findByPk(decoded.id, {attributes:['id', 'name', 'email', 'role', "image"]});
+        const user = await User.findByPk(decoded.id, {attributes:['id', 'name', 'email', 'role', "image", "username", "about", "phone", "location"]});
 
         return user.dataValues;
 
