@@ -1,4 +1,4 @@
-## Ingliz tilini o'rgatuvchi dastur (English Ninja)
+## Ingliz tilini o'rgatuvchi dastur (InTeacher)
 
 Ushbu dastur foydalanuvchilarga ingliz tilini o'rganishda ko'maklashadi. Dastur foydalanuvchilarga online videodarslar va mashqlar taklif qiladi, bu esa ularni ingliz tilini ko'nikmalarini oshirishga yordam beradi.
 
